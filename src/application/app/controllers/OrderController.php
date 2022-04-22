@@ -41,7 +41,6 @@ class OrderController extends Controller
         //$this->view->productDetail=$this->mongo->products->find();
         if($this->request->isPost() === true)
         {
-           
             $bearer=$this->token;
             $data=$this->request->getPost();
             $decoded = $this->decodeToken($bearer);

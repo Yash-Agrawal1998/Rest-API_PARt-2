@@ -101,7 +101,7 @@ $container->set(
     'token',
     function ()
     {
-        $token='eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2NTA2MTgwMTQsImV4cCI6MTY1MDYyMTAxNCwicm9sZSI6ImFtYW5AY2VkY29zcy5jb20ifQ.SQ3lgF7kF-eePjpuC6ZM9V4vA20R6fpHV8_DgHPLy9Q';
+        $token='eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2NTA2MjI3MTUsImV4cCI6MTY1MDYyNTcxNSwicm9sZSI6InRhbnZlZXJAZ21uYWlsLmNvbSJ9.FM-ksj5-f66bljZRJxLuYdrcRcWlss5LXG2k1PAj03c';
         return $token;
    }
 );

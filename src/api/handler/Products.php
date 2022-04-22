@@ -104,12 +104,16 @@ class Products extends Injectable
             $decoded = JWT::decode($bearer, new Key($key, 'HS256'));
             $data=$this->request->getPost();
             $data=$this->escape->sanitizeData($data);
+            $id = [
+                "_id" => new \MongoDB\BSON\ObjectId($data['product_name'])
+            ];
+            $exist=$db->products->find(["_id"=>$id['_id']])->toArray();
             $result=$db->orders->insertOne($data);
             return json_encode($result->getInsertedId());
         } catch(\Exception $e)
         {
             echo $e->getMessage();
-            echo "Token has expired";
+            echo "Either Token has expired or Invalid Product Id";
         }
     }
 

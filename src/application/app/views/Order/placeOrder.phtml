@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,7 +16,7 @@
         <?php
             foreach($productDetail as $value)
             {
-                echo '<option id="'.$value['_id']['$oid'].'">'.$value['name'].'</option>';
+                echo '<option value="'.$value['_id']['$oid'].'">'.$value['name'].'</option>';
             }
         ?>
         </select><br/>
