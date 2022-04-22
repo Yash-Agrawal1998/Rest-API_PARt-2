@@ -1,0 +1,84 @@
+<?php
+require_once APP_PATH.'/views/Product/header.phtml';
+echo '<h4>Filter</h4>';
+
+echo Phalcon\Tag::form(
+    [
+        '/Order/filterOrder',
+        'class' => 'form',
+    ]
+  );
+  
+
+echo 'Select Status<select class="form-control" name="filterStatus">
+    <option value="select">Select</option>
+    <option value="All">All</option>
+    <option value="Paid">Paid</option>
+    <option value="Processing">Processing</option>
+    <option value="Dispatched">Dispatched</option>
+    <option value="Shipped">Shipped</option>
+    <option value="Refunded">Refunded</option>
+</select>';
+
+echo 'Select Date<select class="form-control" name="filterWeek" id="filterWeek">
+        <option value="select">Select</option>
+        <option value="Today">Today</option>
+        <option value="This Week">This Week</option>
+        <option value="This Month">This Month</option>
+        <option value="Custom">Custom</option>
+    </select>';
+  
+    echo '<div class="input-group my-3" id="customDate">
+    <span class="input-group-text">Enter Date</span>
+    <input type="text" aria-label="First name" class="form-control mx-2" placeholder="Start Date(YYYY-MM-DD)" name="startDate">
+    <input type="text" aria-label="Last name" class="form-control" name="endDate" placeholder="End Date(YYY-MM-DD)">
+  </div>';
+  echo Phalcon\Tag::submitButton(
+    [
+        'Filter order',
+        'class' => 'btn btn-big my-3 d-block btn-primary'
+    ]
+  );
+
+  
+echo '<h1>Filtered Order Details</h1>';
+echo '<table class="table" id="order">
+              <tr class="text-center">
+                  <th>Sr No.</th>
+                  <th>Customer Name</th>
+                  <th>Product Name</th>
+                  <th>Product Price</th>
+                  <th>Product Quantity</th>
+                  <th>Order Date</th>
+                  <th>Total Amount</th>
+                  <th>Status</th>
+                  <th></th>
+              </tr>';
+              $serialNumber=1;
+  foreach($filterData as $value) 
+  {
+      echo '<tr class="text-center">
+              <td>'.$serialNumber.'</td>
+              <td>'.$value->customer_name.'</td>
+              <td>'.$value->product_name.'</td>
+              <td>'.$value->product_price.'</td>
+              <td>'.$value->product_quantity.'</td>
+              <td>'.$value->date.'</td>
+              <td>'.$value->total_amount.'</td>
+              <td>'.$value->status.'</td>
+              <td> 
+                    <select class="status" id="'.$value->_id.'">
+                        <option value="Paid">Paid</option>
+                        <option value="Processing">Processing</option>
+                        <option value="Dispatched">Dispatched</option>
+                        <option value="Shipped">Shipped</option>
+                        <option value="Refunded">Refunded</option>
+                    </select>
+                    <button id="'.$value->_id.'" class="changeStatus">Change Status</button>
+                </td>';
+            
+              $serialNumber++;
+  }
+  echo '</table>';
+  
+  

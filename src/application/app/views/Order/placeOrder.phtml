@@ -1,0 +1,28 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Application Order</h1>
+    <form action="<?php echo BASE_URI; ?>/Order/placeOrder" method="POST">  
+        <label>Customer Name</label><input type="text" name="c_name" placeholder="Customer name"><br/>
+        <label>Select product</label>
+        <select name="product_name">
+            <option>Select</option>
+        <?php
+            foreach($productDetail as $value)
+            {
+                echo '<option id="'.$value['_id']['$oid'].'">'.$value['name'].'</option>';
+            }
+        ?>
+        </select><br/>
+        <label>Product Quantity</label><input type="text" placeholder="quantity" name="p_quantity"><br/>
+       <input type="submit" value="Place Order"><br/>
+    </form> 
+</body>
+</html>
