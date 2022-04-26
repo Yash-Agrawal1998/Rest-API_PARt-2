@@ -23,7 +23,7 @@ $config = new Config([]);
 define('BASE_PATH', dirname(__DIR__));
 define('APP_PATH', BASE_PATH . '/app');
 define('BASE_URL', 'http://192.168.2.42:8080/api');
-define('BASE_URI', 'http://localhost:8080/application');
+define('BASE_URI', 'http://192.168.2.42:8080/application');
 
 require_once BASE_PATH.'/app/vendor/autoload.php';
 

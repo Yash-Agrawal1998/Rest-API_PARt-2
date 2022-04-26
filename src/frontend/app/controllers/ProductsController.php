@@ -31,20 +31,25 @@ class ProductsController extends Controller
         {
             $client = new Client();
             $data=$this->request->getPost();
-            $orderdetail=[
-                'customer_email' =>$data['customer_email'],
-                'customer_name' =>$data['customer_name'],
-                'product_id' => $data['product_id'],
-                'quantity' => $data['product_quantity'],
-                'status' => 'Paid'
-            ];
-            $url=BASE_URL.'/order/place/bearer='.$this->token;
-            $orderId=json_decode($client->request('POST',$url,['form_params' => $orderdetail])->getBody()->getContents(), true);
-            $order=array(
-                'orderId' =>$orderId['$oid']
-            );
-            $this->mongo->orderId->insertOne($order);
-            $this->response->redirect(BASE_URI.'/products/listProducts');
+            if ($data['product_stock'] < $data['product_quantity']) {
+                $this->view->msg='Cannot Place Order Due to insufficient Quantity';
+                $this->view->productdata=$product->findProductbyId($data['product_id'], $this->mongo);
+            } else {
+                $orderdetail=[
+                    'customer_email' =>$data['customer_email'],
+                    'customer_name' =>$data['customer_name'],
+                    'product_id' => $data['product_id'],
+                    'quantity' => $data['product_quantity'],
+                    'status' => 'Paid'
+                ];
+                $url=BASE_URL.'/order/place/bearer='.$this->token;
+                $orderId=json_decode($client->request('POST',$url,['form_params' => $orderdetail])->getBody()->getContents(), true);
+                $order=array(
+                    'orderId' =>$orderId['$oid']
+                );
+                $this->mongo->orderId->insertOne($order);
+                $this->response->redirect(BASE_URI.'/products/listProducts');
+            }
         }
 
     }

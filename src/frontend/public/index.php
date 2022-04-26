@@ -9,6 +9,7 @@ use Phalcon\Mvc\Application;
 use Phalcon\Url;
 use Phalcon\Db\Adapter\Pdo\Mysql;
 use Phalcon\Config;
+use Phalcon\Config\ConfigFactory;
 use Phalcon\Session\Manager;
 use Phalcon\Session\Adapter\Stream;
 use Phalcon\Events\Event;
@@ -20,9 +21,15 @@ $config = new Config([]);
 define('BASE_PATH', dirname(__DIR__));
 define('APP_PATH', BASE_PATH . '/app');
 define('BASE_URL', 'http://192.168.2.42:8080/api');
-define('BASE_URI','http://localhost:8080/frontend');
+define('BASE_URI','http://192.168.2.42:8080/frontend');
 
 require_once '../app/vendor/autoload.php';
+
+$profiler = new \Fabfuel\Prophiler\Profiler();
+
+$toolbar = new \Fabfuel\Prophiler\Toolbar($profiler);
+$toolbar->addDataCollector(new \Fabfuel\Prophiler\DataCollector\Request());
+echo $toolbar->render();
 
 $loader = new Loader();
 
@@ -65,6 +72,15 @@ $container->set(
 $application = new Application($container);
 
 $container->set(
+    'config',
+    function () {
+        $filename=APP_PATH.'/storage/constant.php';
+        $factory= new ConfigFactory();
+        return $factory->newInstance('php', $filename);
+    }
+);
+
+$container->set(
     'mongo',
     function () {
         $mongo =  new \MongoDB\Client('mongodb://mongo', array('username'=>'root',"password"=>'password123'));
@@ -89,7 +105,7 @@ $container->set(
     'token',
     function()
     {
-        return 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2NTA5NTcyNDYsImV4cCI6MTY1MDk2MDI0Niwicm9sZSI6ImFudWdyYWhAY2VkY29zcy5jb20ifQ.Kj-UU5Kn22Rd4XzlLtboyvUQOYlyQ5XaYI-e1P4lHBQ';
+        return 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJVdGthcnNoIiwiYXVkIjoiaHR0cDovL2NlZGNvc3MuY29tIiwiaWF0IjoxNjUwOTcxMzUwLCJuYmYiOjE2NTA5NzEyOTAsImV4cCI6MTY1MTA1Nzc1MCwiZW1haWwiOiJBcnJheSJ9.ZbKAsTKCPPLCc48rXgETyNiCsk3Yl0N1axeLHzKaido';
     }
 );
 

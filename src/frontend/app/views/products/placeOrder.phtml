@@ -1,7 +1,10 @@
 <?php
 
-    // echo '<pre>';
-    // print_r($productdata);
+if(isset($msg))
+{
+    echo '<div class="alert alert-danger" role="alert">'.$msg.'
+  </div>';
+}
 
 echo '<h1>Place Order</h1>';
 
@@ -35,44 +38,54 @@ echo Phalcon\Tag::form(
                     'value' => $productdata[0]->api_id
                 ]
                 );
-echo '<label for="product_name">Product Name</label>'.Phalcon\Tag::textField(
-    [
-        'product_name',
-        'required' =>'true',
-        'class' => 'form-control',
-        'value' => $productdata[0]->name
-    ]
-    );
-
-    echo '<label for="product_price">Product Price</label>'.Phalcon\Tag::textField(
-        [
-            'product_price',
-            'required' =>'true',
-            'class' => 'form-control',
-            'value' => $productdata[0]->price
-        ]
-        );
-
-        echo '<label for="product_category">Product Category</label>'.Phalcon\Tag::textField(
-            [
-                'product_category',
-                'required' =>'true',
-                'class' => 'form-control',
-                'value' => $productdata[0]->categoryName
-            ]
-            );
-
-            echo '<label for="product_quantity">Product Quantity</label>'.Phalcon\Tag::textField(
+            echo '<label for="product_name">Product Name</label>'.Phalcon\Tag::textField(
                 [
-                    'product_quantity',
+                    'product_name',
                     'required' =>'true',
                     'class' => 'form-control',
+                    'value' => $productdata[0]->name
                 ]
                 );
 
-                echo Phalcon\Tag::submitButton(
+            echo '<label for="product_price">Product Price</label>'.Phalcon\Tag::textField(
+                [
+                    'product_price',
+                    'required' =>'true',
+                    'class' => 'form-control',
+                    'value' => $productdata[0]->price
+                ]
+                );
+
+                echo '<label for="product_category">Product Category</label>'.Phalcon\Tag::textField(
                     [
-                        'Place Order',
-                        'class' => 'btn btn-outline-primary my-3'
+                        'product_category',
+                        'required' =>'true',
+                        'class' => 'form-control',
+                        'value' => $productdata[0]->categoryName
                     ]
                     );
+
+                    echo Phalcon\Tag::hiddenField(
+                        [
+                            'product_stock',
+                            'required' =>'true',
+                            'class' => 'form-control',
+                            'value' => $productdata[0]->stock
+                        ]
+                        );
+
+
+                    echo '<label for="product_quantity">Product Quantity</label>'.Phalcon\Tag::textField(
+                        [
+                            'product_quantity',
+                            'required' =>'true',
+                            'class' => 'form-control',
+                        ]
+                        );
+
+                        echo Phalcon\Tag::submitButton(
+                            [
+                                'Place Order',
+                                'class' => 'btn btn-outline-primary my-3'
+                            ]
+                            );
