@@ -93,17 +93,20 @@ class ProductsController extends Controller
      *
      * @return void
      */
-    public function editProductAction()
+    public function updateProductAction()
     {
         $db=$this->mongo;
         $id=$this->request->getQuery('id');
-        $product = new Products();
-        $this->view->data=$product->findProductById($id, $db);;
+        $product = new \Products();
+        $this->view->data=$product->findProductById($id, $db);
+        $this->view->id= $id;
         if($this->request->isPost() === true)
         {
             $data=$this->request->get();
-            $product->updateProduct($db,$data,$id);
-            $this->response->redirect("/admin/products/showProducts");
+            $product->updateProduct($db,$data,$data['product_id']);
+            $event=$this->events;
+            $data=$event->fire('notifications:updateProductNotification', $this, $data);
+            $this->response->redirect(BASE_URI."/products/showProducts");
         }
     }
 

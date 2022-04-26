@@ -78,13 +78,11 @@ class Products extends Model
     {
         $id=new \MongoDB\BSON\ObjectId($productid);
         $productDetail=array(
-            'product_name' => $data['product_name'],
-            'product_category' => $data['product_category'],
-            'product_price' => $data['product_price'],
-            'product_stock' => $data['product_stock'],
-            'additionalFields' => $additionalField,
-            'variationFields' =>$variationField
+            'name' => $data['name'],
+            'categoryName' => $data['categoryName'],
+            'price' => $data['price'],
+            'stock' => $data['stock'],
         );
-        $db->products->updateOne(["_id"=>$productid], ['$set'=>$productDetail]);
+        $db->products->updateOne(["_id"=>$id], ['$set'=>$productDetail]);
     }
 }

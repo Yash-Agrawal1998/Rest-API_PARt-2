@@ -23,7 +23,8 @@ echo '<table class="table">
                     <td>'.$value->categoryName.'</td>
                     <td>'.$value->price.'</td>
                     <td>'.$value->stock.'</td>
-                    <td><a href="'.BASE_URI.'/products/deleteProduct?id='.$value['_id'].'" class="btn btn-outline-primary">Delete Product</a></td>';
+                    <td><a href="'.BASE_URI.'/products/deleteProduct?id='.$value['_id'].'" class="btn btn-outline-primary">Delete Product</a></td>
+                    <td><a href="'.BASE_URI.'/products/updateProduct?id='.$value['_id'].'" class="btn btn-outline-primary">Edit Product</a></td>';
                   
                     $serialNumber++;
         }

@@ -1,0 +1,70 @@
+<?php
+
+require_once APP_PATH.'/views/products/header.phtml';
+
+// print_r($data);
+// die;
+echo "<h1>Update Products</h1>";
+echo Phalcon\Tag::form(
+    [
+        BASE_URI.'/products/updateProduct',
+        'class' => 'form',
+        'id' => 'addProduct'
+    ]
+);
+
+echo Phalcon\Tag::hiddenField(
+    [
+        'product_id',
+        'class' => 'form-control',
+        'required' =>true,
+        'value' =>$id
+    ]
+);
+
+echo '<label for="product_name">Product Name</label>'.Phalcon\Tag::textField(
+    [
+        'name',
+        'class' => 'form-control',
+        'required' =>true,
+        'value' =>$data['name']
+    ]
+);
+
+echo '<label for="product_category">Product Category</label>'.Phalcon\Tag::textField(
+    [
+        'categoryName',
+        'class' => 'form-control',
+        'required' =>true,
+        'value' =>$data['categoryName']
+
+    ]
+);
+
+echo '<label for="product_price">Product Price</label>'.Phalcon\Tag::textField(
+    [
+        'price',
+        'class' => 'form-control',
+        'required' =>true,
+        'value' =>$data['price']
+
+    ]
+);
+
+echo '<label for="product_stock">Product Stock</label>'.Phalcon\Tag::textField(
+    [
+        'stock',
+        'class' => 'form-control',
+        'required' =>true,
+        'value' =>$data['stock']
+    ]
+);
+
+
+echo Phalcon\Tag::submitButton(
+    [
+        'Update',
+        'class' => 'btn btn-big d-block btn-primary my-3'
+    ]
+);
+?>

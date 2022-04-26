@@ -89,7 +89,7 @@ $container->set(
     'token',
     function()
     {
-        return 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2NTA5NTQxNzIsImV4cCI6MTY1MDk1NzE3Miwicm9sZSI6ImFudWdyYWhAY2VkY29zcy5jb20ifQ.QmMrHidZku-MO5vjt_BJQhdj83wp93QSTqgUx2vUCZI';
+        return 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2NTA5NTcyNDYsImV4cCI6MTY1MDk2MDI0Niwicm9sZSI6ImFudWdyYWhAY2VkY29zcy5jb20ifQ.Kj-UU5Kn22Rd4XzlLtboyvUQOYlyQ5XaYI-e1P4lHBQ';
     }
 );
 

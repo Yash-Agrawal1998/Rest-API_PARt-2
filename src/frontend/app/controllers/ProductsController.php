@@ -31,7 +31,6 @@ class ProductsController extends Controller
         {
             $client = new Client();
             $data=$this->request->getPost();
-            print_r($data);
             $orderdetail=[
                 'customer_email' =>$data['customer_email'],
                 'customer_name' =>$data['customer_name'],
@@ -40,10 +39,12 @@ class ProductsController extends Controller
                 'status' => 'Paid'
             ];
             $url=BASE_URL.'/order/place/bearer='.$this->token;
-            $orderId=json_decode($client->request('POST',$url,['form_params' => $orderdetail])->getBody()->getContents(),true);
-            echo $url;
-            print_r($orderdetail);
-            die;
+            $orderId=json_decode($client->request('POST',$url,['form_params' => $orderdetail])->getBody()->getContents(), true);
+            $order=array(
+                'orderId' =>$orderId['$oid']
+            );
+            $this->mongo->orderId->insertOne($order);
+            $this->response->redirect(BASE_URI.'/products/listProducts');
         }
 
     }
@@ -55,7 +56,6 @@ class ProductsController extends Controller
      */
     public function getDataAction()
     {
-        echo 'response done';
         $data=$this->request->getPost();
         $product=new Products();
         $productDetail=$product->findProductbyId($data['product_id'], $this->mongo);
@@ -77,9 +77,16 @@ class ProductsController extends Controller
         $product->saves($data, $db);
     }
 
-    public function updateProductsAction()
+    public function updateProductAction()
     {
-        
+        $data=$this->request->getPost();
+        $udata=[
+            'name'=> $data['name'],
+            'categoryName'=> $data['categoryName'],
+            'price'=> $data['price'],
+            'stock'=> $data['stock'],
+        ];
+        $res=$this->mongo->products->updateOne(["api_id"=>$data['product_id']], ['$set'=>$udata]);
     }
 
     /**

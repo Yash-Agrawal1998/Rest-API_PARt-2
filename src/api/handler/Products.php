@@ -131,8 +131,8 @@ class Products extends Injectable
             $productData=$db->products->find(["_id"=>$id['_id']])->toArray();
             $this->updateStock($data['product_id'], $db, $data['quantity'], $productData);
             $event=$this->event;
-            $data=$event->fire('notifications:provideUpdateOfOrder', $this, $data);
             $result=$db->orders->insertOne($data);
+            $data=$event->fire('notifications:provideUpdateOfOrder', $this, $data);
             return json_encode($result->getInsertedId());
         } catch(\Exception $e)
         {
