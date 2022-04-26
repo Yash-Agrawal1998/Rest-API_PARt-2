@@ -1,5 +1,7 @@
 <?php
 
+$_SERVER["REQUEST_URI"] = str_replace("/frontend/","/",$_SERVER["REQUEST_URI"]);
+
 use Phalcon\Di\FactoryDefault;
 use Phalcon\Loader;
 use Phalcon\Mvc\View;
@@ -18,8 +20,9 @@ $config = new Config([]);
 define('BASE_PATH', dirname(__DIR__));
 define('APP_PATH', BASE_PATH . '/app');
 define('BASE_URL', 'http://192.168.2.42:8080/api');
+define('BASE_URI','http://localhost:8080/frontend');
 
-require_once './vendor/autoload.php';
+require_once '../app/vendor/autoload.php';
 
 $loader = new Loader();
 
@@ -29,6 +32,13 @@ $loader->registerDirs(
         APP_PATH . "/models/",
     ]
 );
+
+$loader->registerNamespaces(
+    [
+        'App\Filter' => APP_PATH.'/components',
+    ]
+);
+
 
 $loader->register();
 
@@ -54,17 +64,34 @@ $container->set(
 );
 $application = new Application($container);
 
-
 $container->set(
     'mongo',
     function () {
         $mongo =  new \MongoDB\Client('mongodb://mongo', array('username'=>'root',"password"=>'password123'));
 
-        return $mongo->Store;
+        return $mongo->MyApp;
     },
     true
 );
 
+//Setting the di container for thee escaper
+$container->set(
+    'escape',
+    function()
+    {
+        $escape =new \App\Filter\FilterData();
+        return $escape;
+    }
+);
+
+//Setting the token value in the di container
+$container->set(
+    'token',
+    function()
+    {
+        return 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2NTA5NTQxNzIsImV4cCI6MTY1MDk1NzE3Miwicm9sZSI6ImFudWdyYWhAY2VkY29zcy5jb20ifQ.QmMrHidZku-MO5vjt_BJQhdj83wp93QSTqgUx2vUCZI';
+    }
+);
 
 try {
     // Handle the request

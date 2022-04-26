@@ -5,6 +5,8 @@ namespace Multiple\Api;
 use Phalcon\Mvc\Micro;
 use Phalcon\Loader;
 use Phalcon\Di\FactoryDefault;
+use Phalcon\Events\Event;
+use Phalcon\Events\Manager as EventsManager;
 
 require_once('./vendor/autoload.php');
 
@@ -22,6 +24,17 @@ $loader->register();
 
 $container = new FactoryDefault();
 
+$event =new EventsManager();
+$event->attach(
+    'notifications',
+    new \App\Filter\NotificationListeners()
+);
+
+$container->set(
+    'event',
+    $event
+);
+
 /*******************************************Registering the database in our container*********/
 $container->set(
     'mongo',
@@ -29,7 +42,7 @@ $container->set(
     {
         $mongo =  new \MongoDB\Client('mongodb://mongo', array('username'=>'root',"password"=>'password123'));
 
-        return $mongo->Store;
+        return $mongo->AppStore;
     },
     true
 );
@@ -66,6 +79,21 @@ $app->post(
     } 
 );
 
+$app->before(
+    function () use ($app) {
+        //echo "hello";
+        // $request = new Request();
+        // $tokenByUser= $request->get('token');
+        // if (is_null($tokenByUser)) {
+        //     echo json_encode(['msg' => "Please Provide Token"]);
+        //     die;
+        // } else {
+        //     // Validate Token time Expiry
+        // }
+    }
+);
+
+
 //Setting end point to list all order
 $app->get(
     '/api/order/list/id={email}/bearer={bearer}',
@@ -76,6 +104,16 @@ $app->get(
     } 
 );
 
+//Url for find for all products on limit  
+$app->get(
+    '/api/products/getAll/bearer={bearer}',
+    function($bearer)
+    {
+        $prod = new \Api\Handlers\Products(); 
+        $data= $prod->displayAllData($this->mongo, $bearer);
+        echo $data;
+    }
+);
 
 //Url for find for all products on limit  
 $app->get(

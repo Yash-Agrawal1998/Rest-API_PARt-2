@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit8211978571467560d8679b610fbfc80a
+class ComposerStaticInit7432a2acab89418506be4c65b6baa3d6
 {
     public static $files = array (
         '7b11c4dc42b3b3023073cb14e519683c' => __DIR__ . '/..' . '/ralouphie/getallheaders/src/getallheaders.php',
@@ -39,6 +39,10 @@ class ComposerStaticInit8211978571467560d8679b610fbfc80a
             'GuzzleHttp\\Psr7\\' => 16,
             'GuzzleHttp\\Promise\\' => 19,
             'GuzzleHttp\\' => 11,
+        ),
+        'F' => 
+        array (
+            'Firebase\\JWT\\' => 13,
         ),
     );
 
@@ -80,6 +84,10 @@ class ComposerStaticInit8211978571467560d8679b610fbfc80a
         array (
             0 => __DIR__ . '/..' . '/guzzlehttp/guzzle/src',
         ),
+        'Firebase\\JWT\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/firebase/php-jwt/src',
+        ),
     );
 
     public static $classMap = array (
@@ -93,9 +101,9 @@ class ComposerStaticInit8211978571467560d8679b610fbfc80a
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit8211978571467560d8679b610fbfc80a::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit8211978571467560d8679b610fbfc80a::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit8211978571467560d8679b610fbfc80a::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit7432a2acab89418506be4c65b6baa3d6::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit7432a2acab89418506be4c65b6baa3d6::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit7432a2acab89418506be4c65b6baa3d6::$classMap;
 
         }, null, ClassLoader::class);
     }

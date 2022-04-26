@@ -1,6 +1,5 @@
 <?php
 
-namespace Multiple\Admin\Models;
 
 use  Phalcon\Mvc\Model;
 
@@ -16,13 +15,14 @@ class Products extends Model
     public function saves($data, $db)
     {   
         $productDetail=array(
-            'product_name' => $data['product_name'],
-            'product_category' => $data['product_category'],
-            'product_price' => $data['product_price'],
-            'product_stock' => $data['product_stock'],
-            'additionalFields' => $data['additionalFields']
+            'name' => $data['name'],
+            'categoryName' => $data['categoryName'],
+            'price' => $data['price'],
+            'stock' => $data['stock'],
+            'labelValue' => null
         );
-        $db->products->insertOne($productDetail);
+        $res=$db->products->insertOne($productDetail);
+        return json_encode($res->getInsertedId());
     }
 
     /**

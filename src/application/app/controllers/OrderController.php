@@ -20,7 +20,6 @@ class OrderController extends Controller
         $decoded = $this->decodeToken($bearer);
         $client = new Client();
         $url=BASE_URL.'/order/list/id='.$decoded->role.'/bearer='.$bearer;
-        //$myorder=json_decode($client->request('GET', $url)->getBody()->getContents());
         $this->view->orderDetail=json_decode($client->request('GET', $url)->getBody()->getContents(),true);
     }
 
@@ -34,11 +33,8 @@ class OrderController extends Controller
     {
         $client = new Client();
         $url=BASE_URL.'/products/get/bearer='.$this->token;
-        echo 'order37';
-        $productDetail=$client->request('GET',$url)->getBody()->getContents();
-        $this->view->productDetail=json_decode($client->request('GET',$url)->getBody()->getContents(), true);
-
-        //$this->view->productDetail=$this->mongo->products->find();
+        $productDetail=$client->request('GET',$url)->getBody()->getContents();  
+        $this->view->productDetail=json_decode($productDetail, true);
         if($this->request->isPost() === true)
         {
             $bearer=$this->token;

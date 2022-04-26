@@ -1,8 +1,6 @@
 <?php
 
 use Phalcon\Mvc\Controller;
-use Api\Handlers\Products;
-use GuzzleHttp\Client;
 
 class LoginController extends Controller
 {   
@@ -21,14 +19,11 @@ class LoginController extends Controller
         $login = new Login();
         $loginDetail=$login-> findLoginDetails($data, $db);
         $loginDetail=$loginDetail->toArray();
-        $log=$this->logger;
         if(empty($loginDetail))
         {
-            $log->error("Invalid Credentials");
+            $this->view->errormsg="Invalid Credentials";
         } else {
-            $this->session->set('userdetail', $loginDetail);
-            $log->info("Login Successful");
-            $this->response->redirect(BASE_URI.'/products/index');
+            $this->response->redirect(BASE_URI.'/users/dashboard');
         }
        }
     }
@@ -44,18 +39,17 @@ class LoginController extends Controller
         {
             $data=$this->request->get();
             $data=$this->escape->sanitizeData($data);
-            $token=$this->generateToken($data);
             $db=$this->mongo;
             $login = new Login();
             $login->saveUserData($data, $db);
-            $this->view->token=$token;
+           $this->response->redirect(BASE_URI.'/login/index');
         }
     }
 
     /**
      * function to generate the token
      *
-     * @param [array] $data
+     * @param [type] $data
      * @return void
      */
     private function generateToken($data)

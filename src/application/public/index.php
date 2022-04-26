@@ -53,21 +53,16 @@ $loader->register();
 $container = new FactoryDefault();
 
 
-// $event =new EventsManager();
-// $event->attach(
-//     'notifications',
-//     new App\Filter\NotificationListeners()
-// );
+$event =new EventsManager();
+$event->attach(
+    'notifications',
+    new \App\Filter\NotificationListeners()
+);
 
-// $event->attach(
-//     'application:beforeHandleRequest',
-//     new App\Filter\NotificationListeners()
-// );
-
-// $container->set(
-//     'EventManager',
-//     $event
-// );
+$container->set(
+    'events',
+    $event
+);
 
 
 $container->set(
@@ -101,7 +96,7 @@ $container->set(
     'token',
     function ()
     {
-        $token='eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2NTA2MjI3MTUsImV4cCI6MTY1MDYyNTcxNSwicm9sZSI6InRhbnZlZXJAZ21uYWlsLmNvbSJ9.FM-ksj5-f66bljZRJxLuYdrcRcWlss5LXG2k1PAj03c';
+        $token='eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2NTA2MjM5MDgsImV4cCI6MTY1MDYyNjkwOCwicm9sZSI6ImFtYW5AY2VkY29zcy5jb20ifQ.sH8XK2dLOLgkInTK4V_dCY5eQwE8N0T8XZuhr5bX_6s';
         return $token;
    }
 );

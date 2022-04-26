@@ -4,12 +4,33 @@
 use Phalcon\Mvc\Controller;
 use Multiple\Admin\Models\Products;
 use GuzzleHttp\Client;
+//use Multiple\Admin\Models\Products;
 
 class ProductsController extends Controller
 {
     public function indexAction()
     {
         echo "Products";
+        if($this->request->isPost() === true)
+        {
+            //print_r($this->session->get('userdetail'));
+            $data=$this->request->get();
+            print_r($data);
+            switch($data['operation'])
+            {
+                case 'addProduct':
+                    $this->mongo->addProductsWebHooks->insertOne(['url' =>$data['product_url']]);
+                    break;
+                
+                case 'updateProduct':
+                    $this->mongo->updateProductsWebHooks->insertOne(['url' =>$data['product_url']]);
+                    break;
+
+                case 'deleteProduct':
+                    $this->mongo->deleteProductsWebHooks->insertOne(['url' =>$data['product_url']]);
+                    break;
+            }
+        }
     }
 
 
@@ -25,54 +46,18 @@ class ProductsController extends Controller
         {
             $data=$this->request->getPost();
             $data=$this->escape->sanitizeData($data);
-            $additionalField=$this->selectAdditionalField($data);
-            if (empty($additionalField)) {
-                $additionalField=null;
-            }
-            $data['additionalFields']=$additionalField;
+            $event=$this->events;
             $db=$this->mongo;
-            $product = new Products();
-            $product->saves($data, $db);
-            $this->response->redirect("/admin/products/showProducts");
+            $product = new \Products();
+            $id=json_decode($product->saves($data, $db), true);
+            $data['labelValue']=null;
+            $data['api_id']=$id['$oid'];
+            $data=$event->fire('notifications:addProductNotification', $this, $data); 
+            $this->response->redirect(BASE_URI."/products/showProducts");
         }
     }
 
-    /**
-     * function to create the array for additional field
-     *
-     * @param [type] $data
-     * @param integer $checkPoint
-     * @return void
-     */
-    private function selectAdditionalField($data,$checkPoint=4)
-    {
-        $key;
-        $count=0;
-        $count2=1;
-        $addField=array();
-        foreach($data as $keyData=>$value)
-        {
-            if ($count<$checkPoint) {
-                $count ++;
-                continue;
-            }
-            if($keyData === "price1" or $keyData === 'labelName1')
-            {
-                return $addField; 
-            } else {
-                if ($count2==1) {
-                    $key=$value;
-                    $count2++;
-                } else {
-                    $addField[$key]=$value;
-                    $count2=1;
-                }
-            }
-        }
-        return $addField; 
-    }
-
-
+ 
     /**
      * functon to display users detail
      *
@@ -80,28 +65,7 @@ class ProductsController extends Controller
      */
     public function showProductsAction()
     {
-        $client = new Client();
-        $url=BASE_URL.'/products/get/bearer='.$this->session->token;
-        $productDetail=$client->request('GET',$url);
-        $this->view->productDetail=json_decode($client->request('GET',$url)->getBody()->getContents());
-        // try{
-        //     $decoded = JWT::decode($bearer, new Key($key, 'HS256'));
-        //     $data=$db->products->find(
-        //         [],
-        //         [
-        //             'limit' => intval($limit),
-        //             'skip'  => intval($limit*($page-1))
-        //         ]
-        //     )->toArray();
-        //     return json_encode($data);
-        // } catch(\Exception $e)
-        // {
-        //     echo "Token has expired";
-        // }
-        // $product = new Products();
-        // $db=$this->mongo;
-        // $productDetail= $product->findProducts($db);
-        // $this->view->productDetail= $product->findProducts($db);
+        $this->view->productData=$this->mongo->products->find()->toArray();
     }
 
      /**
@@ -113,9 +77,15 @@ class ProductsController extends Controller
     {
         $db=$this->mongo;
         $id=$this->request->getQuery('id');
-        $product = new Products();
+        echo $id;
+        $data=[
+            'product_id' => $id
+        ];
+        $event=$this->events;
+        $data=$event->fire('notifications:deleteProductNotification', $this, $data);
+        $product = new \Products();
         $product->deleteProduct($id, $db);
-        $this->response->redirect('/admin/products/showProducts');
+        $this->response->redirect(BASE_URI.'/products/showProducts');
     }
 
      /**
@@ -137,21 +107,11 @@ class ProductsController extends Controller
         }
     }
 
-     /**
-     * function to find the additional information
+    /**
+     * function to generate the token
      *
      * @return void
      */
-    public function findInfromationAction()
-    {
-        $data=$this->request->getPost();
-        $db=$this->mongo;
-        $product = new Products();
-        $searchResponse=$product->findProductById($data['id'], $db);
-        return json_encode(array('data'=>$searchResponse));
-    }
-   
-
     public function generateTokenAction()
     {
         $client = new Client();

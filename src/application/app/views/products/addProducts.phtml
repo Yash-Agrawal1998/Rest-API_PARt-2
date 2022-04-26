@@ -1,0 +1,53 @@
+<?php
+
+require_once APP_PATH.'/views/products/header.phtml';
+
+echo "<h1>Add Products</h1>";
+echo Phalcon\Tag::form(
+    [
+        BASE_URI.'/products/addProducts',
+        'class' => 'form',
+        'id' => 'addProduct'
+    ]
+);
+
+echo '<label for="product_name">Product Name</label>'.Phalcon\Tag::textField(
+    [
+        'name',
+        'class' => 'form-control',
+        'required' =>true
+    ]
+);
+
+echo '<label for="product_category">Product Category</label>'.Phalcon\Tag::textField(
+    [
+        'categoryName',
+        'class' => 'form-control',
+        'required' =>true
+    ]
+);
+
+echo '<label for="product_price">Product Price</label>'.Phalcon\Tag::textField(
+    [
+        'price',
+        'class' => 'form-control',
+        'required' =>true
+    ]
+);
+
+echo '<label for="product_stock">Product Stock</label>'.Phalcon\Tag::textField(
+    [
+        'stock',
+        'class' => 'form-control',
+        'required' =>true
+    ]
+);
+
+
+echo Phalcon\Tag::submitButton(
+    [
+        'Add Product',
+        'class' => 'btn btn-big d-block btn-primary my-3'
+    ]
+);
+?>

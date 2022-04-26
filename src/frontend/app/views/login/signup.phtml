@@ -53,22 +53,9 @@
                             );?>
                     </div>
 
-                     <!--Taking role as input by user-->
-                     <div class="form-floating mb-3">
-                        <label for="floatingInput">Role</label>
-                        <?php echo Phalcon\Tag:: textField(
-                            [
-                                'name' => 'role',
-                                'class' => 'form-control',
-                                'id' => 'floatingInput',
-                                'required' => true,
-                                'placeholder' => 'role'
-                            ]
-                            );?>
-                    </div>
 
-                      <!--Taking role as input by user-->
-                      <div class="form-floating mb-3">
+                    <!--Taking password as input by user-->
+                    <div class="form-floating mb-3">
                         <label for="floatingInput">Password</label>
                         <?php echo Phalcon\Tag:: passwordField(
                             [
@@ -91,7 +78,7 @@
                         );
                     ?>
                     <hr class="my-4">
-                    <a href='<?php echo BASE_URI?>/login/index' class="text-primary d-block text-center">Click to Login</a>
+                    <a href='<?php echo BASE_URI;?>/login/index' class="text-primary d-block text-center">Click to Login</a>
                     <small class="text-muted">By clicking Sign up, you agree to the terms of use.</small>
                 </form>
                 <!--End of form tag-->

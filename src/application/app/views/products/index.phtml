@@ -1,0 +1,34 @@
+<?php
+require_once APP_PATH.'/views/products/header.phtml';
+
+echo '<h4>Select Notification</h4>';
+
+echo Phalcon\Tag::form(
+    [
+        BASE_URI.'/products/index',
+        'class' => 'form'
+    ]
+);
+
+echo '
+<label for="select_operation">Select Operation</label>
+<select class="form-control" aria-label="Default select example" name="operation">
+<option selected>Select</option>
+<option value="addProduct">Add Product</option>
+<option value="updateProduct">Update Product</option>
+<option value="deleteProduct">Delete Product</option>
+</select>';
+
+echo '<label for="url">End URL</label>'.Phalcon\Tag::textField(
+    [
+        'product_url',
+        'class' => 'form-control'
+    ]
+);
+
+echo Phalcon\Tag::submitButton(
+    [
+        'Submit',
+        'class' =>"my-3 btn btn-outline-primary",
+    ]
+    );

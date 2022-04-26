@@ -1,0 +1,76 @@
+<?php
+    if(isset($errormsg))
+    {
+        echo '<div class="alert alert-danger" role="alert">
+        '.$errormsg.'
+      </div>
+      ';
+    }
+
+?>
+<div class="container">
+        <div class="row align-items-center g-lg-5 py-5">
+            <div class="col-md-10 mx-auto col-lg-5">
+                <?php 
+                        echo Phalcon\Tag::form(
+                        [
+                            BASE_URI."/login/index",
+                            "method" => "post",
+                            'class' =>"p-4 p-md-5 border rounded-3 bg-light"
+                        ]
+                    );
+                ?>
+                    <h1 class="text-center text-primary">Log In</h1>
+                    <div class="form-floating mb-3">
+                        <label for="floatingInput">Email address</label>
+                            <?php echo Phalcon\Tag:: emailField(
+                            [
+                                'name' => 'email',
+                                'class' => 'form-control',
+                                'id' => 'floatingInput',
+                                'required' => true,
+                                'placeholder' => 'name@example.com'
+                            ]
+                            );?>
+                        
+                    </div>
+                    <div class="form-floating mb-3">
+                    <label for="floatingPassword">Password</label>
+                        <?php 
+                            echo Phalcon\Tag::passwordField(
+                                [
+                                    'name' => 'password',
+                                    'class' => 'form-control',
+                                    'id' => 'floatingpassword',
+                                    'required' => true,
+                                    'placeholder' => 'password'
+                                ]
+                            )
+                        ?>
+                    </div>
+                    <div class="checkbox mb-3">
+                        <label>
+                            <?php
+                                echo Phalcon\Tag::checkfield(
+                                    [
+                                        'remember-me',
+                                    ]
+                                    );
+                            ?>
+                            Remember me 
+                        </label>
+                    </div>
+                    <?php
+                        echo Phalcon\Tag::submitButton(
+                            [
+                                "Sign In",
+                                'class' => 'w-100 btn btn-lg btn-primary'
+                            ]
+                        );
+                    ?>
+                    <hr class="my-4">
+                    <a href='<?php echo BASE_URI;?>/login/signup' class="text-primary d-block text-center">Click to SignUp</a>
+                    <small class="text-muted">By clicking Sign up, you agree to the terms of use.</small>
+                </form>
+            </div>
+        </div>

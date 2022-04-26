@@ -19,6 +19,27 @@ class Products extends Injectable
     }
 
     /**
+     * function to display the details of all the products
+     *
+     * @param [object] $db
+     * @param string $bearer
+     * @return void
+     */
+    public function displayAllData($db, $bearer="")
+    {
+        $key = "example_key";
+        try{
+            $decoded = JWT::decode($bearer, new Key($key, 'HS256'));
+            $data=$db->products->find()->toArray();
+            return json_encode($data);
+        } catch(\Exception $e)
+        {
+            echo "Token has expired";
+        }
+    }
+
+
+    /**
      * function to display the products list 
      *
      * @param [object] $db
@@ -105,9 +126,12 @@ class Products extends Injectable
             $data=$this->request->getPost();
             $data=$this->escape->sanitizeData($data);
             $id = [
-                "_id" => new \MongoDB\BSON\ObjectId($data['product_name'])
+                "_id" => new \MongoDB\BSON\ObjectId($data['product_id'])
             ];
-            $exist=$db->products->find(["_id"=>$id['_id']])->toArray();
+            $productData=$db->products->find(["_id"=>$id['_id']])->toArray();
+            $this->updateStock($data['product_id'], $db, $data['quantity'], $productData);
+            $event=$this->event;
+            $data=$event->fire('notifications:provideUpdateOfOrder', $this, $data);
             $result=$db->orders->insertOne($data);
             return json_encode($result->getInsertedId());
         } catch(\Exception $e)
@@ -116,7 +140,18 @@ class Products extends Injectable
             echo "Either Token has expired or Invalid Product Id";
         }
     }
-
+    
+    private function updateStock($product_id, $db, $quantity, $productData)
+    {
+        $stock= $productData[0]->stock - $quantity;
+        $stockUpdate=[
+            'stock' => $stock
+        ];
+        $id = [
+            "_id" => new \MongoDB\BSON\ObjectId($product_id)
+        ];
+        $res=$db->products->updateOne(["_id"=>$id['_id']], ['$set'=>$stockUpdate]);
+    }
     /**
      * function to update the order status
      *

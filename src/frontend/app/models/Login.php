@@ -16,11 +16,9 @@ class Login extends Model
         $userDetail=array(
             'user_fullname' => $data['fullname'],
             'user_email' => $data['email'],
-            'user_role' => $data['role'],
-            'user_password' => $data['password']
+            'user_password' => $data['password'],
         );
         $response=$db->users->insertOne($userDetail);
-        return json_encode($response->getInsertedId());
     }
 
     /**

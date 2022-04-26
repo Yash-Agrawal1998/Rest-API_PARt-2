@@ -34,6 +34,7 @@ final class Versions
      */
     const VERSIONS          = array (
   'composer/package-versions-deprecated' => '1.11.99.5@b4f54f74ef3453349c24a845d22392cd31e65f1d',
+  'firebase/php-jwt' => 'v6.1.2@c297139da7c6873dbd67cbd1093f09ec0bbd0c50',
   'guzzlehttp/guzzle' => '7.4.2@ac1ec1cd9b5624694c3a40be801d94137afb12b4',
   'guzzlehttp/promises' => '1.5.1@fe752aedc9fd8fcca3fe7ad05d419d32998a06da',
   'guzzlehttp/psr7' => '2.2.1@c94a94f120803a18554c1805ef2e539f8285f9a2',

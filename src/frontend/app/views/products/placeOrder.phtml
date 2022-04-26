@@ -1,0 +1,78 @@
+<?php
+
+    // echo '<pre>';
+    // print_r($productdata);
+
+echo '<h1>Place Order</h1>';
+
+echo Phalcon\Tag::form(
+    [
+        BASE_URI.'/products/placeOrder',
+        'class' => 'form',
+    ]
+    );
+
+    echo '<label for="customer-name">Customer Name</label>'.Phalcon\Tag::textField(
+        [
+            'customer_name',
+            'required' =>'true',
+            'class' => 'form-control',
+        ]
+        );
+
+        echo '<label for="customer-email">Customer Email</label>'.Phalcon\Tag::textField(
+            [
+                'customer_email',
+                'required' =>'true',
+                'class' => 'form-control',
+            ]
+            );
+            echo Phalcon\Tag::hiddenField(
+                [
+                    'product_id',
+                    'required' =>'true',
+                    'class' => 'form-control',
+                    'value' => $productdata[0]->api_id
+                ]
+                );
+echo '<label for="product_name">Product Name</label>'.Phalcon\Tag::textField(
+    [
+        'product_name',
+        'required' =>'true',
+        'class' => 'form-control',
+        'value' => $productdata[0]->name
+    ]
+    );
+
+    echo '<label for="product_price">Product Price</label>'.Phalcon\Tag::textField(
+        [
+            'product_price',
+            'required' =>'true',
+            'class' => 'form-control',
+            'value' => $productdata[0]->price
+        ]
+        );
+
+        echo '<label for="product_category">Product Category</label>'.Phalcon\Tag::textField(
+            [
+                'product_category',
+                'required' =>'true',
+                'class' => 'form-control',
+                'value' => $productdata[0]->categoryName
+            ]
+            );
+
+            echo '<label for="product_quantity">Product Quantity</label>'.Phalcon\Tag::textField(
+                [
+                    'product_quantity',
+                    'required' =>'true',
+                    'class' => 'form-control',
+                ]
+                );
+
+                echo Phalcon\Tag::submitButton(
+                    [
+                        'Place Order',
+                        'class' => 'btn btn-outline-primary my-3'
+                    ]
+                    );

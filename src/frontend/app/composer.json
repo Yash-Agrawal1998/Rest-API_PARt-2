@@ -1,0 +1,7 @@
+{
+    "require": {
+        "guzzlehttp/guzzle": "^7.0",
+        "mongodb/mongodb": "^1.12",
+        "firebase/php-jwt": "^6.1"
+    }
+}

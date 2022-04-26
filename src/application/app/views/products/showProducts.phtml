@@ -1,0 +1,30 @@
+<?php
+require_once APP_PATH.'/views/products/header.phtml';
+
+
+echo '<h1>List Products</h1>';
+
+echo '<table class="table">
+        <tr class="text-center">
+            <th>Sr No.</th>
+            <th>Name</th>
+            <th>Category</th>
+            <th>Price</th>
+            <th>Stock</th>
+            <th></th>
+        </tr>';
+
+        $serialNumber=1;
+        foreach($productData as $value) 
+        {
+            echo '<tr class="text-center">
+                    <td>'.$serialNumber.'</td>
+                    <td>'.$value->name.'</td>
+                    <td>'.$value->categoryName.'</td>
+                    <td>'.$value->price.'</td>
+                    <td>'.$value->stock.'</td>
+                    <td><a href="'.BASE_URI.'/products/deleteProduct?id='.$value['_id'].'" class="btn btn-outline-primary">Delete Product</a></td>';
+                  
+                    $serialNumber++;
+        }
+        echo '</table>';
