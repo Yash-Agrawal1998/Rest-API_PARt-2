@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Products" namespace="" name="Products" abstract="false" final="false" start="6" end="118">
+  <file path="./models" file="Products.php" realpath="/home/cedcoss/Training/API-APP/src/frontend/app/models/Products.php" size="3102" time="2022-04-28T09:17:43+00:00" unixtime="1651137463" sha1="7e387b22f2a51d8cfbd7a31e6d4024159f52a116" relative="models/Products.php"/>
+  <extends full="Phalcon\Mvc\Model" namespace="Phalcon\Mvc" name="Model" unresolved="true"/>
+  <method name="getProducts" start="15" end="39" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="function to get the products information from database"/>
+      <param type="object" variable="$db">
+        <type full="[object]" namespace="" name="[object]"/>
+      </param>
+      <param type="object" variable="$token">
+        <type full="[string]" namespace="" name="[string]"/>
+      </param>
+      <return type="array"/>
+    </docblock>
+    <parameter name="db" byreference="false" type="{unknown}"/>
+    <parameter name="token" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="fetchDataFromAPI" start="47" end="53" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description compact="function to fetc the products information from API"/>
+      <param type="object" variable="$token">
+        <type full="[string]" namespace="" name="[string]"/>
+      </param>
+      <return type="object">
+        <type full="JSON" namespace="" name="JSON"/>
+      </return>
+    </docblock>
+    <parameter name="token" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="findProductbyId" start="62" end="65" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="function to find the product by id of product"/>
+      <param type="object" variable="$id">
+        <type full="[type]" namespace="" name="[type]"/>
+      </param>
+      <param type="object" variable="$db">
+        <type full="[object]" namespace="" name="[object]"/>
+      </param>
+      <return type="array"/>
+    </docblock>
+    <parameter name="id" byreference="false" type="{unknown}"/>
+    <parameter name="db" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="updateStock" start="77" end="84" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="function to update the stock on the place of order"/>
+      <param type="object" variable="$product_id">
+        <type full="[string]" namespace="" name="[string]"/>
+      </param>
+      <param type="object" variable="$db">
+        <type full="[object]" namespace="" name="[object]"/>
+      </param>
+      <param type="object" variable="$quantity">
+        <type full="[string]" namespace="" name="[string]"/>
+      </param>
+      <param type="object" variable="$productData">
+        <type full="[object]" namespace="" name="[object]"/>
+      </param>
+      <return type="object">
+        <type full="void" namespace="" name="void"/>
+      </return>
+    </docblock>
+    <parameter name="product_id" byreference="false" type="{unknown}"/>
+    <parameter name="db" byreference="false" type="{unknown}"/>
+    <parameter name="quantity" byreference="false" type="{unknown}"/>
+    <parameter name="productData" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="saves" start="93" end="104" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="function to save the products detail"/>
+      <param type="object" variable="$data">
+        <type full="[array]" namespace="" name="[array]"/>
+      </param>
+      <param type="object" variable="$db">
+        <type full="[object]" namespace="" name="[object]"/>
+      </param>
+      <return type="object">
+        <type full="void" namespace="" name="void"/>
+      </return>
+    </docblock>
+    <parameter name="data" byreference="false" type="{unknown}"/>
+    <parameter name="db" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="deleteProduct" start="113" end="116" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="function to delete the product"/>
+      <param type="object" variable="$productid">
+        <type full="[string]" namespace="" name="[string]"/>
+      </param>
+      <param type="object" variable="$db">
+        <type full="[object]" namespace="" name="[object]"/>
+      </param>
+      <return type="object">
+        <type full="void" namespace="" name="void"/>
+      </return>
+    </docblock>
+    <parameter name="productid" byreference="false" type="{unknown}"/>
+    <parameter name="db" byreference="false" type="{unknown}"/>
+  </method>
+</class>

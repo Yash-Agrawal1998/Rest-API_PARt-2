@@ -58,4 +58,5 @@ class LoginController extends Controller
         $url=BASE_URL.'/user/getToken/'.$data['email'];
         return $client->request('GET',$url)->getBody()->getContents();
     }
+
 }

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Products" namespace="" name="Products" abstract="false" final="false" start="6" end="88">
+  <file path="./models" file="Products.php" realpath="/home/cedcoss/Training/API-APP/src/application/app/models/Products.php" size="2101" time="2022-04-26T07:49:53+00:00" unixtime="1650959393" sha1="0b67dc996609732e926680e44d11da2891894a09" relative="models/Products.php"/>
+  <extends full="Phalcon\Mvc\Model" namespace="Phalcon\Mvc" name="Model" unresolved="true"/>
+  <method name="saves" start="15" end="26" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="function to save the products detail"/>
+      <param type="object" variable="$data">
+        <type full="[array]" namespace="" name="[array]"/>
+      </param>
+      <param type="object" variable="$db">
+        <type full="[object]" namespace="" name="[object]"/>
+      </param>
+      <return type="object">
+        <type full="void" namespace="" name="void"/>
+      </return>
+    </docblock>
+    <parameter name="data" byreference="false" type="{unknown}"/>
+    <parameter name="db" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="findProducts" start="34" end="37" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="function to find all the products"/>
+      <param type="object" variable="$db">
+        <type full="[object]" namespace="" name="[object]"/>
+      </param>
+      <return type="object"/>
+    </docblock>
+    <parameter name="db" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="deleteProduct" start="46" end="52" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="function to delete the product"/>
+      <param type="object" variable="$productid">
+        <type full="[string]" namespace="" name="[string]"/>
+      </param>
+      <param type="object" variable="$db">
+        <type full="[object]" namespace="" name="[object]"/>
+      </param>
+      <return type="object">
+        <type full="void" namespace="" name="void"/>
+      </return>
+    </docblock>
+    <parameter name="productid" byreference="false" type="{unknown}"/>
+    <parameter name="db" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="findProductById" start="61" end="67" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="function to find the product by id"/>
+      <param type="object" variable="$productid">
+        <type full="[string]" namespace="" name="[string]"/>
+      </param>
+      <param type="object" variable="$db">
+        <type full="[object]" namespace="" name="[object]"/>
+      </param>
+      <return type="object">
+        <type full="void" namespace="" name="void"/>
+      </return>
+    </docblock>
+    <parameter name="productid" byreference="false" type="{unknown}"/>
+    <parameter name="db" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="updateProduct" start="77" end="87" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="function to update the product information"/>
+      <param type="object" variable="$db">
+        <type full="[object]" namespace="" name="[object]"/>
+      </param>
+      <param type="object" variable="$data">
+        <type full="[array]" namespace="" name="[array]"/>
+      </param>
+      <param type="object" variable="$productid">
+        <type full="[string]" namespace="" name="[string]"/>
+      </param>
+      <return type="object">
+        <type full="void" namespace="" name="void"/>
+      </return>
+    </docblock>
+    <parameter name="db" byreference="false" type="{unknown}"/>
+    <parameter name="data" byreference="false" type="{unknown}"/>
+    <parameter name="productid" byreference="false" type="{unknown}"/>
+  </method>
+</class>

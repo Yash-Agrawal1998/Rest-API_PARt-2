@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="LoginController" namespace="" name="LoginController" abstract="false" final="false" start="5" end="62">
+  <file path="./controllers" file="LoginController.php" realpath="/home/cedcoss/Training/API-APP/src/frontend/app/controllers/LoginController.php" size="1479" time="2022-04-28T05:24:34+00:00" unixtime="1651123474" sha1="7ca2d96c6cc117869172fe5856278756fb93609f" relative="controllers/LoginController.php"/>
+  <extends full="Phalcon\Mvc\Controller" namespace="Phalcon\Mvc" name="Controller" unresolved="true"/>
+  <method name="indexAction" start="12" end="29" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="function for login"/>
+      <return type="object">
+        <type full="void" namespace="" name="void"/>
+      </return>
+    </docblock>
+  </method>
+  <method name="signupAction" start="36" end="47" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="function for signup"/>
+      <return type="object">
+        <type full="void" namespace="" name="void"/>
+      </return>
+    </docblock>
+  </method>
+  <method name="generateToken" start="55" end="60" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description compact="function to generate the token"/>
+      <param type="object" variable="$data">
+        <type full="[type]" namespace="" name="[type]"/>
+      </param>
+      <return type="object">
+        <type full="void" namespace="" name="void"/>
+      </return>
+    </docblock>
+    <parameter name="data" byreference="false" type="{unknown}"/>
+  </method>
+</class>

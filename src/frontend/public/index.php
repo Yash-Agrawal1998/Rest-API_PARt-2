@@ -23,6 +23,10 @@ define('APP_PATH', BASE_PATH . '/app');
 define('BASE_URL', 'http://192.168.2.42:8080/api');
 define('BASE_URI','http://192.168.2.42:8080/frontend');
 
+$debug = new \Phalcon\Debug();
+$debug->listen();
+    
+
 require_once '../app/vendor/autoload.php';
 
 $profiler = new \Fabfuel\Prophiler\Profiler();
@@ -33,6 +37,7 @@ echo $toolbar->render();
 
 $loader = new Loader();
 
+//Registering the directories
 $loader->registerDirs(
     [
         APP_PATH . "/controllers/",
@@ -40,6 +45,8 @@ $loader->registerDirs(
     ]
 );
 
+
+//Registering the namespaces
 $loader->registerNamespaces(
     [
         'App\Filter' => APP_PATH.'/components',
@@ -52,6 +59,7 @@ $loader->register();
 
 $container = new FactoryDefault();
 
+//setting the container for the view
 $container->set(
     'view',
     function () {
@@ -71,6 +79,7 @@ $container->set(
 );
 $application = new Application($container);
 
+//Setting the di container for the config 
 $container->set(
     'config',
     function () {
@@ -80,6 +89,7 @@ $container->set(
     }
 );
 
+//Setting the Di container for the mongo
 $container->set(
     'mongo',
     function () {
@@ -90,7 +100,7 @@ $container->set(
     true
 );
 
-//Setting the di container for thee escaper
+//Setting the di container for the escaper
 $container->set(
     'escape',
     function()

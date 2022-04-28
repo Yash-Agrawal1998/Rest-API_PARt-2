@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="ComposerAutoloaderInit77548de61165d3c6bd5fa12b722b97a5" namespace="" name="ComposerAutoloaderInit77548de61165d3c6bd5fa12b722b97a5" abstract="false" final="false" start="5" end="64">
+  <file path="./vendor/composer" file="autoload_real.php" realpath="/home/cedcoss/Training/API-APP/src/frontend/app/vendor/composer/autoload_real.php" size="2476" time="2022-04-28T07:12:26+00:00" unixtime="1651129946" sha1="f92e310fdf8cd62fe37ed2a958638c7ad3b3283e" relative="vendor/composer/autoload_real.php"/>
+  <member name="loader" visibility="private" static="true" line="7"/>
+  <method name="loadClassLoader" start="9" end="14" abstract="false" final="false" static="true" visibility="public">
+    <parameter name="class" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="getLoader" start="19" end="63" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <return type="object">
+        <type full="\Composer\Autoload\ClassLoader" namespace="\Composer\Autoload" name="ClassLoader"/>
+      </return>
+    </docblock>
+  </method>
+</class>

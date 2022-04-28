@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="ProductsController" namespace="" name="ProductsController" abstract="false" final="false" start="6" end="109">
+  <file path="./controllers" file="ProductsController.php" realpath="/home/cedcoss/Training/API-APP/src/frontend/app/controllers/ProductsController.php" size="3331" time="2022-04-26T11:05:09+00:00" unixtime="1650971109" sha1="8a3aeb7b5c29d18e6974b4252e09363ee9fb6aea" relative="controllers/ProductsController.php"/>
+  <extends full="Phalcon\Mvc\Controller" namespace="Phalcon\Mvc" name="Controller" unresolved="true"/>
+  <method name="listProductsAction" start="13" end="18" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="function to list all the products"/>
+      <return type="object">
+        <type full="void" namespace="" name="void"/>
+      </return>
+    </docblock>
+  </method>
+  <method name="placeOrderAction" start="25" end="55" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="function to place order"/>
+      <return type="object">
+        <type full="void" namespace="" name="void"/>
+      </return>
+    </docblock>
+  </method>
+  <method name="getDataAction" start="62" end="69" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="function to handle the post request on the place of order"/>
+      <return type="object">
+        <type full="void" namespace="" name="void"/>
+      </return>
+    </docblock>
+  </method>
+  <method name="addProductsAction" start="76" end="83" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="function to handle post request of API on product add"/>
+      <return type="object">
+        <type full="void" namespace="" name="void"/>
+      </return>
+    </docblock>
+  </method>
+  <method name="updateProductAction" start="85" end="95" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="deleteProductsAction" start="102" end="108" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="function to handle post request of api on delete of product"/>
+      <return type="object">
+        <type full="void" namespace="" name="void"/>
+      </return>
+    </docblock>
+  </method>
+</class>

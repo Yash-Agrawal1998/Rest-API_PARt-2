@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<index xmlns="http://xml.phpdox.net/src" basedir="/home/cedcoss/Training/API-APP/src/application/app">
+  <namespace name="">
+    <class name="ProductsController" src="controllers/ProductsController.php" xml="classes/ProductsController.xml"/>
+    <class name="OrderController" src="controllers/OrderController.php" xml="classes/OrderController.xml"/>
+    <class name="LoginController" src="controllers/LoginController.php" xml="classes/LoginController.xml"/>
+    <class name="Products" src="models/Products.php" xml="classes/Products.xml"/>
+    <class name="Login" src="models/Login.php" xml="classes/Login.xml"/>
+  </namespace>
+  <namespace name="App\Filter">
+    <class name="NotificationListeners" src="components/NotificationListeners.php" description="Class to handle the webhooks" xml="classes/App_Filter_NotificationListeners.xml"/>
+    <class name="FilterData" src="components/FilterData.php" description="Class for filtering our data" xml="classes/App_Filter_FilterData.xml"/>
+  </namespace>
+</index>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="UsersController" namespace="" name="UsersController" abstract="false" final="false" start="5" end="12">
+  <file path="./controllers" file="UsersController.php" realpath="/home/cedcoss/Training/API-APP/src/frontend/app/controllers/UsersController.php" size="140" time="2022-04-26T06:54:39+00:00" unixtime="1650956079" sha1="5d3db6471a96d892de4d85f37e08c6c97bedcc37" relative="controllers/UsersController.php"/>
+  <extends full="Phalcon\Mvc\Controller" namespace="Phalcon\Mvc" name="Controller" unresolved="true"/>
+  <method name="dashboardAction" start="7" end="10" abstract="false" final="false" static="false" visibility="public"/>
+</class>

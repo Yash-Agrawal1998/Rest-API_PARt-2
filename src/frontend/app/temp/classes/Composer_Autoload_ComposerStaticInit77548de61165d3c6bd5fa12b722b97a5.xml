@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Composer\Autoload\ComposerStaticInit77548de61165d3c6bd5fa12b722b97a5" namespace="Composer\Autoload" name="ComposerStaticInit77548de61165d3c6bd5fa12b722b97a5" abstract="false" final="false" start="7" end="410">
+  <file path="./vendor/composer" file="autoload_static.php" realpath="/home/cedcoss/Training/API-APP/src/frontend/app/vendor/composer/autoload_static.php" size="22476" time="2022-04-28T07:20:53+00:00" unixtime="1651130453" sha1="c750391af901615c8af9a507dc325de1bfc22387" relative="vendor/composer/autoload_static.php"/>
+  <member name="files" default="" type="array" visibility="public" static="true" line="9"/>
+  <member name="prefixLengthsPsr4" default="" type="array" visibility="public" static="true" line="26"/>
+  <member name="prefixDirsPsr4" default="" type="array" visibility="public" static="true" line="107"/>
+  <member name="classMap" default="" type="array" visibility="public" static="true" line="315"/>
+  <method name="getInitializer" start="401" end="409" abstract="false" final="false" static="true" visibility="public">
+    <parameter name="loader" byreference="false" type="object">
+      <type full="Composer\Autoload\ClassLoader" namespace="Composer\Autoload" name="ClassLoader"/>
+    </parameter>
+  </method>
+</class>

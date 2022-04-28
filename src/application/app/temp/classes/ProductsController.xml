@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="ProductsController" namespace="" name="ProductsController" abstract="false" final="false" start="9" end="125">
+  <file path="./controllers" file="ProductsController.php" realpath="/home/cedcoss/Training/API-APP/src/application/app/controllers/ProductsController.php" size="3584" time="2022-04-26T07:48:30+00:00" unixtime="1650959310" sha1="2eea26fdfabbc7c99fa54e4600aa8029fba527d4" relative="controllers/ProductsController.php"/>
+  <extends full="Phalcon\Mvc\Controller" namespace="Phalcon\Mvc" name="Controller" unresolved="true"/>
+  <method name="indexAction" start="11" end="34" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="addProductsAction" start="43" end="58" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="function to add users"/>
+      <param type="object" variable="$userData">
+        <type full="[type]" namespace="" name="[type]"/>
+      </param>
+      <return type="object">
+        <type full="void" namespace="" name="void"/>
+      </return>
+    </docblock>
+  </method>
+  <method name="showProductsAction" start="66" end="69" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="functon to display users detail"/>
+      <return type="object">
+        <type full="void" namespace="" name="void"/>
+      </return>
+    </docblock>
+  </method>
+  <method name="deleteProductAction" start="76" end="89" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="function to delete the product"/>
+      <return type="object">
+        <type full="void" namespace="" name="void"/>
+      </return>
+    </docblock>
+  </method>
+  <method name="updateProductAction" start="96" end="111" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="function to edit the product"/>
+      <return type="object">
+        <type full="void" namespace="" name="void"/>
+      </return>
+    </docblock>
+  </method>
+  <method name="generateTokenAction" start="118" end="124" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="function to generate the token"/>
+      <return type="object">
+        <type full="void" namespace="" name="void"/>
+      </return>
+    </docblock>
+  </method>
+</class>

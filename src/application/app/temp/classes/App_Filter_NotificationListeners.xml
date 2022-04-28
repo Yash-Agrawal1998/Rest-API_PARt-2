@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="App\Filter\NotificationListeners" namespace="App\Filter" name="NotificationListeners" abstract="false" final="false" start="10" end="82">
+  <file path="./components" file="NotificationListeners.php" realpath="/home/cedcoss/Training/API-APP/src/application/app/components/NotificationListeners.php" size="2402" time="2022-04-26T07:30:28+00:00" unixtime="1650958228" sha1="07621d74e4c3112c23952e4c4581a8a61d27f920" relative="components/NotificationListeners.php"/>
+  <docblock>
+    <description compact="Class to handle the webhooks"/>
+  </docblock>
+  <method name="provideUpdateOfOrder" start="20" end="26" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="function to handle the webhooks on the place of order"/>
+      <param type="object" variable="$event">
+        <type full="App\Filter\[object]" namespace="App\Filter" name="[object]"/>
+      </param>
+      <param type="object" variable="$component">
+        <type full="App\Filter\[object]" namespace="App\Filter" name="[object]"/>
+      </param>
+      <param type="object" variable="$product">
+        <type full="App\Filter\[array]" namespace="App\Filter" name="[array]"/>
+      </param>
+      <return type="object">
+        <type full="App\Filter\void" namespace="App\Filter" name="void"/>
+      </return>
+    </docblock>
+    <parameter name="event" byreference="false" type="{unknown}"/>
+    <parameter name="component" byreference="false" type="{unknown}"/>
+    <parameter name="product" byreference="false" type="{unknown}"/>
+    <inline>
+      <comment value="echo $productId;" line="22"/>
+    </inline>
+  </method>
+  <method name="addProductNotification" start="36" end="45" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="function to handle the webhooks on the addition of product"/>
+      <param type="object" variable="$event">
+        <type full="App\Filter\[object]" namespace="App\Filter" name="[object]"/>
+      </param>
+      <param type="object" variable="$component">
+        <type full="App\Filter\[object]" namespace="App\Filter" name="[object]"/>
+      </param>
+      <param type="object" variable="$productData">
+        <type full="App\Filter\[array]" namespace="App\Filter" name="[array]"/>
+      </param>
+      <return type="object">
+        <type full="App\Filter\void" namespace="App\Filter" name="void"/>
+      </return>
+    </docblock>
+    <parameter name="event" byreference="false" type="{unknown}"/>
+    <parameter name="component" byreference="false" type="{unknown}"/>
+    <parameter name="productData" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="deleteProductNotification" start="55" end="63" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="function to handle the webhooks on the delete of products"/>
+      <param type="object" variable="$event">
+        <type full="App\Filter\[object]" namespace="App\Filter" name="[object]"/>
+      </param>
+      <param type="object" variable="$component">
+        <type full="App\Filter\[object]" namespace="App\Filter" name="[object]"/>
+      </param>
+      <param type="object" variable="$product">
+        <type full="App\Filter\[array]" namespace="App\Filter" name="[array]"/>
+      </param>
+      <return type="object">
+        <type full="App\Filter\void" namespace="App\Filter" name="void"/>
+      </return>
+    </docblock>
+    <parameter name="event" byreference="false" type="{unknown}"/>
+    <parameter name="component" byreference="false" type="{unknown}"/>
+    <parameter name="productData" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="updateProductNotification" start="73" end="81" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="function to handle the webhooks on the update of products"/>
+      <param type="object" variable="$event">
+        <type full="App\Filter\[object]" namespace="App\Filter" name="[object]"/>
+      </param>
+      <param type="object" variable="$component">
+        <type full="App\Filter\[object]" namespace="App\Filter" name="[object]"/>
+      </param>
+      <param type="object" variable="$product">
+        <type full="App\Filter\[array]" namespace="App\Filter" name="[array]"/>
+      </param>
+      <return type="object">
+        <type full="App\Filter\void" namespace="App\Filter" name="void"/>
+      </return>
+    </docblock>
+    <parameter name="event" byreference="false" type="{unknown}"/>
+    <parameter name="component" byreference="false" type="{unknown}"/>
+    <parameter name="productData" byreference="false" type="{unknown}"/>
+  </method>
+</class>

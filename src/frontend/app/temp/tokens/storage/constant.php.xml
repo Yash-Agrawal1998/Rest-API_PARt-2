@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<source xmlns="http://xml.phpdox.net/token">
+  <file xmlns="http://xml.phpdox.net/src" path="./storage" file="constant.php" realpath="/home/cedcoss/Training/API-APP/src/frontend/app/storage/constant.php" size="34" time="2022-04-26T12:59:58+00:00" unixtime="1650977998" sha1="a2223e3a1b790805651df5a1429f0e997a95dfdf" relative="storage/constant.php"/>
+  <line no="1">
+    <token name="T_OPEN_TAG">&lt;?php</token>
+  </line>
+  <line no="2">
+    <token name="T_STRING">define</token>
+    <token name="T_PHPDOX_OPEN_BRACKET">(</token>
+    <token name="T_CONSTANT_ENCAPSED_STRING">'BASE_PATH'</token>
+    <token name="T_PHPDOX_COMMA">,</token>
+    <token name="T_CONSTANT_ENCAPSED_STRING">'hello'</token>
+    <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
+  </line>
+</source>
