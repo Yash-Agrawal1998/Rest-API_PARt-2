@@ -1,11 +1,8 @@
 {
     "name": "Yash-Agrawal1998/Rest-API_PARt-2",
     "description": "The Laravel Framework.",
-    "version":"v1.0.0",
-    "require":{
-            "php": ">=7.0.0"
-    },
     "require": {
+         "php": ">=7.0.0"
         "guzzlehttp/guzzle": "^7.0",
         "mongodb/mongodb": "^1.12",
         "firebase/php-jwt": "^6.1"
